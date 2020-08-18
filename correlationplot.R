@@ -1,0 +1,12 @@
+library(ggplot2)
+library(dplyr)
+library(mosaicData)
+library(ggcorrplot)
+data<-SaratogaHouses
+data<-select_if(SaratogaHouses, is.numeric)
+r<-cor(data, use='complete.obs')
+round(r, 2)
+ggcorrplot(r)
+ggcorrplot(r, hc.order = T)
+ggcorrplot(r, hc.order = T, type='lower')
+ggcorrplot(r, hc.order = T, type='lower', lab=T)

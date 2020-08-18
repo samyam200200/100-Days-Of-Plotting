@@ -1,0 +1,5 @@
+#Lineplot (plotting time)
+library(tidyverse)
+library(gapminder)
+data<-filter(gapminder, country=="United States")
+ggplot(data, aes(x=year, y=lifeExp))+geom_line(size=1.5, color="lightgrey")+geom_point(size=3, color="steelblue")+labs(y="Life expectancy in years", x="Year", title = "Life expectancy changes over time", subtitle = "United states(1952-2007)", caption="Source: http://www.gapminder.org/data")

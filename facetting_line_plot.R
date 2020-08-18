@@ -1,0 +1,5 @@
+library(tidyverse)
+library(gapminder)
+View(gapminder)
+data<-gapminder%>%filter(continent=="Americas")
+ggplot(data, aes(x=year, y=lifeExp))+geom_line(color="grey")+geom_point(color="blue")+facet_wrap(~country)+theme_minimal(base_size = 9)+theme(axis.text.x = element_text(angle=45, hjust=1))+labs(x="Year", y="Life expectancy", title="changes in life expectancy")

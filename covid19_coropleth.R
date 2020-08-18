@@ -1,0 +1,4 @@
+data<-read_csv("time_series_covid19_confirmed_global.csv")
+data<-data%>%select("Country/Region", "3/7/20")%>%rename(region="Country/Region", value="3/7/20")%>%mutate(region=tolower(region))%>%group_by(region)%>%summarize(value=sum(value))%>%mutate(region=recode(region, "us" = "united states of america","congo (kinshasa)" = "democratic republic of the congo","congo (brazzaville)" = "republic of congo",   "korea, south" = "south korea", "tanzania" = "united republic of tanzania", "taiwan*"="taiwan",  serbia = "republic of serbia",  "slovak republic" = "slovakia","yemen, rep." = "yemen", "burma"="myanmar", "north macedonia"="macedonia", "guinea-bissau"="guinea bissau", "cote d'ivoire"="ivory coast", "czechia"="czech republic", "somalia"="somaliland", "timor-leste"="east timor", ))
+
+country_choropleth(data, num_colors = 7)+scale_fill_brewer(palette="YlOrRd")
